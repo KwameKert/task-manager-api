@@ -76,7 +76,7 @@ const userTasks = async (req, res) => {
 
 module.exports = {
     saveTask, 
-    getTask,
+    findTask,
     userTasks,
     deleteTask,
     updateTask

@@ -21,7 +21,7 @@ const taskSchema = new mongoose.Schema({
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
         ref: 'User'
     }
 
@@ -31,6 +31,6 @@ const taskSchema = new mongoose.Schema({
 
 
 
-const Task = mongoose.model('Task'  taskSchema)
+const Task = mongoose.model('Task',  taskSchema)
 
 module.exports = Task

@@ -16,14 +16,14 @@ const categorySchema = new mongoose.Schema({
 
 }, {
     timestamps: true
-}
+})
 
 
 categorySchema.virtual('tasks', {
     ref: 'Task',
     localField: '_id',
     foreignField: 'category'
-}
+})
 
 const Category =  mongoose.model('Category', categorySchema);
 

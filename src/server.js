@@ -7,6 +7,8 @@ require('./db/mongoose.js')
 
 //defining routes here
 const userRouter = require('./router/user')
+const taskRouter = require('./router/task')
+const categoryRouter = require('./router/category')
 
 //defining cors here
 app.options('*', cors());
@@ -20,6 +22,7 @@ app.use(function(req, res, next) {
 
 app.use(express.json())
 app.use(userRouter)
-
+app.use(taskRouter)
+app.use(categoryRouter)
 
 module.exports = app

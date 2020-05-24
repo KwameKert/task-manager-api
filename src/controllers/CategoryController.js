@@ -78,7 +78,7 @@ const deleteCategory = async (req, res) => {
 
 module.exports = {
     saveCategory,
-    fetchCategory, 
+    fetchCategories, 
     fetchCategoryTasks,
     updateCategory,
     deleteCategory
