@@ -51,7 +51,12 @@ const userSchema = new mongoose.Schema({
 })
 
 
-
+//virtual tasks
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+})
 
 //hiding data 
 userSchema.methods.toJSON = function() {
