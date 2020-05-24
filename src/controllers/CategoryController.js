@@ -13,7 +13,40 @@ const saveCategory = async (req, res) => {
         await category.save()
         responseApi(res, 201, category, "Category saved " )
     }catch(e){
-        responseApi(res, 400, null, e.message)
+        responseApi(res, 500, null, e.message)
     }
 
 }
+
+
+//fetching all categories
+const fetchCategories = async (req, res ) => {
+    
+    try{
+        let categories = Category.find({status: {$ne: 'deleted'}});
+        categories.length < 1 ? responseApi(res, 204, null, "No categories found"): 
+                                responseApi(res, 200, categories, "Categories found" )
+    }catch(e){
+        responseApi(res, 500, null, e.message)
+    }
+
+}
+
+
+//fetch categories with tasks
+const fetchCategoryTasks = async (req, res) => {
+        
+    try{
+        let categories = Category.find({status: {$ne: 'deleted'}}).populate('tasks').exec();
+        categories.length < 1 ? responseApi(res, 204, null, "No categories found"): 
+                                responseApi(res, 200, categories, "Categories found" )
+        responseApi(res, 200, categories, "Categories with tasks found");
+    }catch(e){
+        responseApi(res, 500, null, e.message)
+    }
+
+}
+
+
+
+
