@@ -48,5 +48,17 @@ const fetchCategoryTasks = async (req, res) => {
 }
 
 
+//update category
+const updateCategory = async (req, res ) => {
+    
+    let _id = req.params.id
+    try{
+        await Category.findOneAndUpdate({_id}, req.body);
+        responstApi(res, 200, null, "Category updated ")
+    }catch(e){
+        responseApi(res, 500, null, e.message);
+    }
 
+
+}
 
