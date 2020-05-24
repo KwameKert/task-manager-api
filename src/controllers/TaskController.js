@@ -44,3 +44,16 @@ const updateTask = async (req, res) => {
     }
 
 }
+
+
+const deleteTask = async (req, res) => {
+
+    let _id = req.params.id
+    try{
+        let task = await Task.findOneAndDelete({_id, owner: req.user._id});
+        responseApi(res, 200, task, "Task deleted")
+    }catch(e){
+        responseApi(res, 500, null, e.message)
+    }
+
+}
