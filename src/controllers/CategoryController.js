@@ -62,3 +62,24 @@ const updateCategory = async (req, res ) => {
 
 }
 
+
+//deteletCategory
+const deleteCategory = async (req, res) => {
+    
+    try{
+        await Category.findOneAndDelete({_id})
+        responseApi(res, 200, null, "category deleted ")
+    }catch(e){
+        responseApi(res, 500, null, e.message)
+    }
+
+}
+
+
+module.exports = {
+    saveCategory,
+    fetchCategory, 
+    fetchCategoryTasks,
+    updateCategory,
+    deleteCategory
+}
