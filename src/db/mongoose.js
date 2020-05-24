@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const connectionUrl = process.env.MONGODB_URI || 'mongodb://127.0.0.1/my-db';
+const connectionUrl = process.env.MONGODB_URI || 'mongodb://127.0.0.1/task-db';
 
 
 mongoose.connect(connectionUrl,{
