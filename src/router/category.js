@@ -3,15 +3,18 @@ const router = express.Router()
 const CategoryController = require('../controllers/CategoryController')
 const auth = require('../middleware/auth')
 
+
+//fetch category tasks
+router.get('/category/tasks', auth, CategoryController.fetchCategoryTasks);
+
 //save category
 router.post('/category/', auth,  CategoryController.saveCategory);
 
 
+
+
 //fetch user category
 router.get('/category/user', auth, CategoryController.fetchUserCategories);
-
-//fetch category tasks
-router.get('/category/task', auth, CategoryController.fetchCategoryTasks);
 
 //fetch category
 router.get('/category/:id', auth, CategoryController.fetchCategories);

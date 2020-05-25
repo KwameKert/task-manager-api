@@ -129,7 +129,8 @@ userSchema.pre('save', async function(next) {
 })
 
 
-
+userSchema.set('toObject', { virtuals: true })
+userSchema.set('toJSON', { virtuals: true })
 
 //creating user model 
 const User = mongoose.model('User', userSchema)

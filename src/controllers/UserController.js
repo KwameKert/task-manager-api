@@ -20,7 +20,7 @@ const saveUser = async (req, res)=>{
 //get all users
 const getAllUsers = async (req, res)=>{
     try{
-        let users = await User.find({});
+        let users = await User.find({}).populate('categories').exec();
          users.length < 1 ?  responseApi(res, 204, null, "No user founud") : 
                              responseApi(res, 200, users, "Users found");
     }catch(e){

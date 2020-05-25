@@ -40,9 +40,9 @@ const fetchCategories = async (req, res ) => {
 const fetchUserCategories = async (req, res) => {
     console.log("user cat")
     try{
-        let categories = await  Category.find({status: {$ne: 'deleted'}, owner: req.user._id}).populate('task').exec();
-        categories.length < 1 ? responseApi(res, 204, null, "No categories found"): 
-                                responseApi(res, 200, categories, "Categories found" )
+        let categories = await  Category.find({status: {$ne: 'deleted'}, owner: req.user._id})
+        categories.length < 1 ? responseApi(res, 204, null, "No user categories found"): 
+                                responseApi(res, 200, categories, "User categories found" )
     }catch(e){
         responseApi(res, 500, null, e.message)
     }
@@ -94,8 +94,8 @@ const deleteCategory = async (req, res) => {
 
 module.exports = {
     saveCategory,
-    fetchUserCategories,
     fetchCategoryTasks,
+    fetchUserCategories,
     fetchCategories,
     updateCategory,
     deleteCategory
