@@ -87,7 +87,7 @@ const getUser = async (req, res) => {
         if(!user){
             responseApi(res, 400, null, "User does not exist")
         }
-        responseApi(res, 200, null, "User found ")
+        responseApi(res, 200, user, "User found ")
     }catch(e){
         responseApi(res, 400, null, e.message)
     }
