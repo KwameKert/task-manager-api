@@ -11,6 +11,10 @@ const categorySchema = new mongoose.Schema({
     status: {
         type: String,
         default: 'active'
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId, 
+        required: true
     }
 
 
@@ -19,7 +23,7 @@ const categorySchema = new mongoose.Schema({
 })
 
 
-categorySchema.virtual('tasks', {
+categorySchema.virtual('task', {
     ref: 'Task',
     localField: '_id',
     foreignField: 'category'

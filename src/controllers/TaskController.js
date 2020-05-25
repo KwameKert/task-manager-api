@@ -23,12 +23,14 @@ const saveTask = async (req, res)  => {
 
 
 const findTask = async (req, res ) =>{
+    console.log(req.user)
     let _id = req.params.id;
     try{
         let task = await  Task.findOne({_id, owner: req.user._id})
+        console.log(task)
         responseApi(res, 200, task, "Task found" )
     }catch(e){
-        responseApi(res, 500, null, e.message)
+        responseApi(res, 504, null, e.message)
     }
 }
 
@@ -40,6 +42,7 @@ const updateTask = async (req, res) => {
         let task = await Task.findOneAndUpdate({_id, owner: req.user._id}, req.body)
         responseApi(res, 200, task, "Task updated")
     }catch(e){
+        console.log(e)
         responseApi(res, 500, null, e.message)
     }
 
@@ -53,6 +56,7 @@ const deleteTask = async (req, res) => {
         let task = await Task.findOneAndDelete({_id, owner: req.user._id});
         responseApi(res, 200, task, "Task deleted")
     }catch(e){
+        console.log(e)
         responseApi(res, 500, null, e.message)
     }
 
@@ -60,13 +64,13 @@ const deleteTask = async (req, res) => {
 
 
 const userTasks = async (req, res) => {
-
     try{
         let tasks = await Task.find({owner: req.user._id});
-        tasks.length > 1 ? responseApi(res, 200, tasks, "Tasks found"):
+        tasks.length > 0 ? responseApi(res, 200, tasks, "Tasks found"):
                            responseApi(res, 204, null, "No task found ")
 
     }catch(e){
+        console.log(e)
         responseApi(res, 500, null, e.message)
     }
 

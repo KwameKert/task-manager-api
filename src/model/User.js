@@ -58,6 +58,15 @@ userSchema.virtual('tasks', {
     foreignField: 'owner'
 })
 
+
+//virtual category
+userSchema.virtual('categories',{
+    ref: 'Category',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
+
 //hiding data 
 userSchema.methods.toJSON = function() {
 

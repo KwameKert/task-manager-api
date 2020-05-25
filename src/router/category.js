@@ -6,11 +6,16 @@ const auth = require('../middleware/auth')
 //save category
 router.post('/category/', auth,  CategoryController.saveCategory);
 
-//fetch category
-router.get('/category/:id', auth, CategoryController.fetchCategories);
+
+//fetch user category
+router.get('/category/user', auth, CategoryController.fetchUserCategories);
 
 //fetch category tasks
 router.get('/category/task', auth, CategoryController.fetchCategoryTasks);
+
+//fetch category
+router.get('/category/:id', auth, CategoryController.fetchCategories);
+
 
 //update category
 router.patch('/category/:id', auth, CategoryController.updateCategory);

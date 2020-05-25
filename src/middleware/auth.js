@@ -2,6 +2,7 @@ const User = require('../model/User')
 const jwt = require('jsonwebtoken')
 
 const auth = async (req,res, next) =>{
+   
     try{
         const token = req.header("Authorization").replace('Bearer ', '');
         const decoded = await jwt.verify(token, 'tasksecret');
@@ -11,8 +12,8 @@ const auth = async (req,res, next) =>{
             req.user = user
             req.token = token
         }
-       
 
+    	next();
     }catch(e){
         res.status(401).send("{error: 'Please authenticate ' }")
     }
