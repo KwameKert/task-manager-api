@@ -40,9 +40,7 @@ const fetchCategories = async (req, res ) => {
 const fetchUserCategories = async (req, res) => {
     console.log("user cat")
     try{
-        let categories = await  Category.find({status: {$ne: 'deleted'}, owner: req.user._id}).populate('task').exec(function(error, task){
-        console.log(task)
-        });
+        let categories = await  Category.find({status: {$ne: 'deleted'}, owner: req.user._id}).populate('task').exec();
         categories.length < 1 ? responseApi(res, 204, null, "No categories found"): 
                                 responseApi(res, 200, categories, "Categories found" )
     }catch(e){
