@@ -14,6 +14,10 @@ const taskSchema = new mongoose.Schema({
         enum: ['pending', 'ongoing', 'completed'],
         default: 'pending'
     },
+    dueDate: {
+        type: Date,
+        required: true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
