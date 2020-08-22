@@ -9,6 +9,7 @@ require('./db/mongoose.js')
 const userRouter = require('./router/user')
 const taskRouter = require('./router/task')
 const categoryRouter = require('./router/category')
+const healthRouter = require('./router/health');
 
 //defining cors here
 app.options('*', cors());
@@ -24,5 +25,6 @@ app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
 app.use(categoryRouter)
+app.use(healthRouter)
 
 module.exports = app
